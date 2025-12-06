@@ -41,8 +41,10 @@ The system has three main modules:
 
  **TCP Client Connections:**  
   - Each campus client connecting to the server is assigned a separate thread (clientHandler) to handle messaging and communication independently.
+  
  **UDP Heartbeat Listener:**  
   - The server has a separate thread (udpListener) listening for all UDP heartbeats concurrently.
+  
  **Admin Console:**  
   - A separate thread (adminConsole) handles admin commands without interrupting client-server communication.
 
