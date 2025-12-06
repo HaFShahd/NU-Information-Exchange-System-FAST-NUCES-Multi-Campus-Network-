@@ -25,13 +25,13 @@ The system has three main modules:
 ### Application Features
 
 ### Hybrid Protocol Usage
-**TCP (Transmission Control Protocol)**  
+1. **TCP (Transmission Control Protocol)**  
   Used for all **critical one-to-one communication**, including:
  Campus client authentication
  Sending messages between campuses
  Receiving administrative commands
 
-- **UDP (User Datagram Protocol)**  
+2. **UDP (User Datagram Protocol)**  
   Used for **non-critical, broadcast, or status-update messages**,
   including:
    Periodic heartbeat messages from campus clients
@@ -52,8 +52,8 @@ at the same time** without blocking each other.
 ### Message Routing
  Messages follow the format: `TargetCampus,TargetDept,Message`
  The server identifies the destination campus and department:
-   If the exact department is connected, the message is routed there.
-   If the department is not connected, the message is sent to any available client in that campus.
+   1. If the exact department is connected, the message is routed there.
+   2. If the department is not connected, the message is sent to any available client in that campus.
  Received messages are stored in **message history** on the client for review.
 
 ### Heartbeat and Status Monitoring
