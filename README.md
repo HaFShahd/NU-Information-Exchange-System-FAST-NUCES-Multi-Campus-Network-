@@ -38,7 +38,7 @@ The system has three main modules:
    Admin system-wide announcements
 
 ### Concurrency Handling
-We used **`std::thread`** (via pthread in C) to handle multiple clients at the same time:
+We used **std::thread** (via pthread in C) to handle multiple clients at the same time:
  **TCP Client Connections:**  
   Each campus client connecting to the server is assigned a separate thread (clientHandler) to handle messaging and communication independently.
  **UDP Heartbeat Listener:**  
