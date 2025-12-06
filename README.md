@@ -38,26 +38,26 @@ The system has three main modules:
    Admin system-wide announcements
 
 ### Concurrency Handling
-We used **`std::thread`** (via `pthread` in C) to handle multiple clients at the same time:
+We used **`std::thread`** (via pthread in C) to handle multiple clients at the same time:
  **TCP Client Connections:**  
-  Each campus client connecting to the server is assigned a separate thread (`clientHandler`) to handle messaging and communication independently.
+  Each campus client connecting to the server is assigned a separate thread (clientHandler) to handle messaging and communication independently.
  **UDP Heartbeat Listener:**  
-  The server has a separate thread (`udpListener`) listening for all UDP heartbeats concurrently.
+  The server has a separate thread (udpListener) listening for all UDP heartbeats concurrently.
  **Admin Console:**  
-  A separate thread (`adminConsole`) handles admin commands without interrupting client-server communication.
+  A separate thread (adminConsole) handles admin commands without interrupting client-server communication.
 
 **Benefit:** This design ensures that **multiple campuses can send messages, receive broadcasts, and update status
 at the same time** without blocking each other.
 
 ### Message Routing
- Messages follow the format: `TargetCampus,TargetDept,Message`
+ Messages follow the format: TargetCampus,TargetDept,Message
  The server identifies the destination campus and department:
    1. If the exact department is connected, the message is routed there.
    2. If the department is not connected, the message is sent to any available client in that campus.
  Received messages are stored in **message history** on the client for review.
 
 ### Heartbeat and Status Monitoring
- Each campus client sends a heartbeat every 10 seconds using UDP with the format `Campus|Department`.
+ Each campus client sends a heartbeat every 10 seconds using UDP with the format Campus|Department.
  The server stores the last seen timestamp and UDP address for each campus.
  Admins can view real-time status of all connected campuses.
 
