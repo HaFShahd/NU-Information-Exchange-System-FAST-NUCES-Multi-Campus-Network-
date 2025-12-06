@@ -1,8 +1,7 @@
 # NU-Information-Exchange-System-FAST-NUCES-Multi-Campus-Network-
 
-## Project Overview
-This project implements a **multi-campus information exchange system** for FAST-NUCES using **C socket programming**.
-The system follows a **client-server architecture** and supports communication between campuses and departments using **TCP (reliable)** and **UDP (connectionless)** protocols.
+The system follows a **client-server architecture** and supports communication between campuses and departments
+using **TCP (reliable)** and **UDP (connectionless)** protocols.
 
 The system has three main modules:
 
